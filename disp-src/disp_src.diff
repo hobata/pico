@@ -1,0 +1,43 @@
+commit a145abf502737c91147c7f8a76479d96798fdc57
+Author: hobata <khtxw836@gmail.com>
+Date:   Fri Dec 13 21:40:03 2024 +0900
+
+    display source application
+
+diff --git a/config/config.h b/config/config.h
+index 9d65be7..0dd4866 100644
+--- a/config/config.h
++++ b/config/config.h
+@@ -147,7 +147,7 @@
+ /* Use Physical timer.
+  *  1: Valid  0: Invalid
+  */
+-#define USE_PTMR		(0)	/* Use Physical timer */
++#define USE_PTMR		(1)	/* Use Physical timer */
+ 
+ /*---------------------------------------------------------------------- */
+ /* Use Sample device driver.
+diff --git a/config/config_device.h b/config/config_device.h
+index cd42217..83d8134 100644
+--- a/config/config_device.h
++++ b/config/config_device.h
+@@ -28,5 +28,6 @@
+ #define DEVCNF_USE_SER		1		// Serial communication device 
+ #define DEVCNF_USE_ADC		1		// A/D conversion device
+ #define DEVCNF_USE_IIC		1		// I2C communication device
++#define DEVCNF_USE_GPIO		1		// PIO communication device
+ 
+ #endif	/* __DEV_CONFIG_H__ */
+\ No newline at end of file
+diff --git a/include/sys/sysdepend/cpu/rp2040/sysdef.h b/include/sys/sysdepend/cpu/rp2040/sysdef.h
+index a02bae5..54411e0 100644
+--- a/include/sys/sysdepend/cpu/rp2040/sysdef.h
++++ b/include/sys/sysdepend/cpu/rp2040/sysdef.h
+@@ -226,6 +226,7 @@
+ /* IOPORT (SIO:Single-cycle IO) */
+ #define SIO_BASE                0xD0000000
+ 
++#define CPUID			(SIO_BASE+0x0)
+ #define	GPIO_IN			(SIO_BASE+0x004)
+ 
+ #define	GPIO_OUT		(SIO_BASE+0x008)
